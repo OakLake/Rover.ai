@@ -54,6 +54,9 @@ int initialize_motorlib(){
 	} 
 
 void motorDriveSpeed(int motor, int pwm_speed, int direction){
+	if ((direction != 1) or (direction != -1)){
+		std::cout << "invalid direction, direction = -1 or 1" << std::endl;
+	}
 	switch motor{
 		case 1:
 		if (direction == 1){
@@ -88,19 +91,41 @@ void motorDriveSpeed(int motor, int pwm_speed, int direction){
 			softPwmWrite(motor4B_pin, 0);
 			softPwmWrite(motor4A_pin, pwm_speed);
 			}
+		default:
+		  break;
 		}
 }
 
 void motorDriveSpeedAll(int pwm_speed, int direction){
+	motorDriveSpeed( motor1,  pwm_speed,  direction);
+	motorDriveSpeed( motor2,  pwm_speed,  direction);
+	motorDriveSpeed( motor3,  pwm_speed,  direction);
+	motorDriveSpeed( motor4,  pwm_speed,  direction);
+	
 }
 
 
 void motorStop(int motor){
+	switch(motor){
+		case motor1:
+		  motorDriveSpeed(motor1, 0, 1);
+		case motor2:
+		 motorDriveSpeed(motor2, 0, 1);
+		case motor3:
+		  motorDriveSpeed(motor3, 0, 1);
+		case motor4:
+		  motorDriveSpeed(motor4, 0, 1);
+		default:
+		  break;
+		}
 
 }
 
 void motorStopAll(){
-
+	motorStrop(motor1);
+	motorStrop(motor2);
+	motorStrop(motor3);
+	motorStrop(motor4);
 }
 
 void motorTurn(double time_sec, int turn_speed, int direction){
