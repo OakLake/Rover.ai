@@ -131,8 +131,8 @@ void motorStopAll(){
 void motorTurn(double time_sec, int pwm_speed, int direction){
     motorDriveSpeed( motor1,  pwm_speed,  direction);
 	motorDriveSpeed( motor2,  pwm_speed,  direction);
-	motorDriveSpeed( motor3,  pwm_speed,  direction);
-	motorDriveSpeed( motor4,  pwm_speed,  direction);
+	motorDriveSpeed( motor3,  pwm_speed,  -direction);
+	motorDriveSpeed( motor4,  pwm_speed,  -direction);
 	sleep(time_sec)
 	motorStopAll();
 }
