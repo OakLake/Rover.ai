@@ -24,6 +24,6 @@ void motorDriveSpeed(int motor, int pwm_speed, int direction);
 void motorDriveSpeedAll(int pwm_speed, int direction);
 void motorStop(int motor);
 void motorStopAll();
-void motorTurn(int angle_radian, int direction); 
+void motorBaseTurn(int angle_radian, int direction); 
 
 #endif

@@ -128,7 +128,7 @@ void motorStopAll(){
 	motorStrop(motor4);
 }
 
-void motorTurn(double time_sec, int pwm_speed, int direction){
+void motorBaseTurn(double time_sec, int pwm_speed, int direction){
     motorDriveSpeed( motor1,  pwm_speed,  direction);
 	motorDriveSpeed( motor2,  pwm_speed,  direction);
 	motorDriveSpeed( motor3,  pwm_speed,  -direction);
