@@ -13,13 +13,15 @@ int main(int argc, char** argv){
 		cout << "Motorlib Failled to initialise!!" << endl;
 			}
 	cout << "Turning motor" << endl;
-	motorDriveSpeedAll(25, -1);
+	motorDriveSpeedAll(25, 1);
 	sleep(3);
 	motorStopAll();
 	sleep(3);
-	cout << "Turning Base" << endl;
-	motorBaseTurnTime(4.0,18, 1);
-	sleep(0.5);
+	cout << "Diff Drive" << endl;
+	motorDriveSpeedDiff( 20,  45,  1);
+	sleep(3);
+	motorStopAll();
+	sleep(3);
 	cout << "Stopped and exiting!" << endl;
 	
 	return 0;

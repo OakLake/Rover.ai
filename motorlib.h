@@ -29,5 +29,5 @@ void motorStop(int motor);
 void motorStopAll();
 void motorBaseTurn(int angle_radian, int direction); 
 void motorBaseTurnTime(double time_sec, int angle_radian, int direction); 
-
+void motorDriveSpeedDiff(int rightside_pwm_speed, int lefside_pwm_speed, int direction);
 #endif

@@ -151,3 +151,11 @@ void motorBaseTurnTime(double time_sec, int pwm_speed, int direction){
 	motorStopAll();
 }
 
+void motorDriveSpeedDiff(int rightside_pwm_speed, int lefside_pwm_speed, int direction){
+    motorDriveSpeed( motor1,  rightside_pwm_speed,  direction);
+	motorDriveSpeed( motor2,  rightside_pwm_speed,  direction);
+	motorDriveSpeed( motor3,  lefside_pwm_speed,  direction);
+	motorDriveSpeed( motor4,  lefside_pwm_speed,  direction);
+		
+}
+
