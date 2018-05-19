@@ -12,10 +12,13 @@
 
 #define motor1A_pin 17
 #define motor1B_pin 27
-#define motor2A_pin 22 
-#define motor2B_pin 23
-#define motor3A_pin 5
-#define motor3B_pin 6
+
+#define motor2A_pin 23 
+#define motor2B_pin 22
+
+#define motor3A_pin 6
+#define motor3B_pin 5
+
 #define motor4A_pin 16
 #define motor4B_pin 26
 
@@ -25,6 +28,6 @@ void motorDriveSpeedAll(int pwm_speed, int direction);
 void motorStop(int motor);
 void motorStopAll();
 void motorBaseTurn(int angle_radian, int direction); 
-void motorBaseTurnTime(int angle_radian, int direction); 
+void motorBaseTurnTime(double time_sec, int angle_radian, int direction); 
 
 #endif

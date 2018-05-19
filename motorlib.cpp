@@ -1,9 +1,12 @@
+#include "motorlib.h"
 #include <wiringPi.h>
 #include <softPwm.h>
 #include <iostream>
 #include <unistd.h>
 
-#include "motorlib.h"
+
+
+
 
 int initialize_motorlib(){
 	int failure = 0;
@@ -18,46 +21,46 @@ int initialize_motorlib(){
 	pinMode(motor4A_pin, OUTPUT);
 	pinMode(motor4B_pin, OUTPUT);
 	
-	if (softPwmCreate (motor1A_pin, 0,  100) == 0){cout << "PWM motor1A initialisation successful!" << endl;}
-	else{cout << "PWM motor1A initialisation Failed!" << endl;
+	if (softPwmCreate (motor1A_pin, 0,  100) == 0){std::cout << "PWM motor1A initialisation successful!" << std::endl;}
+	else{std::cout << "PWM motor1A initialisation Failed!" << std::endl;
 		failure = -1;}
     
-    if (softPwmCreate (motor1B_pin, 0,  100) == 0){ cout << "PWM motor1B initialisation successful!" << endl;
-	}else{ cout << "PWM motor1B initialisation Failed!" << endl;
+    if (softPwmCreate (motor1B_pin, 0,  100) == 0){ std::cout << "PWM motor1B initialisation successful!" << std::endl;
+	}else{ std::cout << "PWM motor1B initialisation Failed!" << std::endl;
 		failure = -1;}
 	
-	if (softPwmCreate (motor2A_pin, 0,  100) == 0){cout << "PWM motor1A initialisation successful!" << endl;}
-	else{cout << "PWM motor1A initialisation Failed!" << endl;
+	if (softPwmCreate (motor2A_pin, 0,  100) == 0){std::cout << "PWM motor2A initialisation successful!" << std::endl;}
+	else{std::cout << "PWM motor2A initialisation Failed!" << std::endl;
 		failure = -1;}
 	
-	if (softPwmCreate (motor2B_pin, 0,  100) == 0){cout << "PWM motor1A initialisation successful!" << endl;}
-	else{cout << "PWM motor1A initialisation Failed!" << endl;
+	if (softPwmCreate (motor2B_pin, 0,  100) == 0){std::cout << "PWM motor2B initialisation successful!" << std::endl;}
+	else{std::cout << "PWM motor2B initialisation Failed!" << std::endl;
 		failure = -1;}
 	
-	if (softPwmCreate (motor3A_pin, 0,  100) == 0){cout << "PWM motor1A initialisation successful!" << endl;}
-	else{cout << "PWM motor1A initialisation Failed!" << endl;
+	if (softPwmCreate (motor3A_pin, 0,  100) == 0){std::cout << "PWM motor3A initialisation successful!" << std::endl;}
+	else{std::cout << "PWM motor3A initialisation Failed!" << std::endl;
 		failure = -1;}
 	
-	if (softPwmCreate (motor3B_pin, 0,  100) == 0){cout << "PWM motor1A initialisation successful!" << endl;}
-	else{cout << "PWM motor1A initialisation Failed!" << endl;
+	if (softPwmCreate (motor3B_pin, 0,  100) == 0){std::cout << "PWM motor3B initialisation successful!" << std::endl;}
+	else{std::cout << "PWM motor3B initialisation Failed!" << std::endl;
 		failure = -1;}
 	
-	if (softPwmCreate (motor4A_pin, 0,  100) == 0){cout << "PWM motor1A initialisation successful!" << endl;}
-	else{cout << "PWM motor1A initialisation Failed!" << endl;
+	if (softPwmCreate (motor4A_pin, 0,  100) == 0){std::cout << "PWM motor4A initialisation successful!" << std::endl;}
+	else{std::cout << "PWM motor4A initialisation Failed!" << std::endl;
 		failure = -1;}
 	
-	if (softPwmCreate (motor4B_pin, 0,  100) == 0){cout << "PWM motor1A initialisation successful!" << endl;}
-	else{cout << "PWM motor1A initialisation Failed!" << endl;
+	if (softPwmCreate (motor4B_pin, 0,  100) == 0){std::cout << "PWM motor4B initialisation successful!" << std::endl;}
+	else{std::cout << "PWM motor4B initialisation Failed!" << std::endl;
 		failure = -1;}
 	
 	return failure;
 	} 
 
 void motorDriveSpeed(int motor, int pwm_speed, int direction){
-	if ((direction != 1) or (direction != -1)){
+	if ( (direction != 1) and (direction != -1) ){
 		std::cout << "invalid direction, direction = -1 or 1" << std::endl;
 	}
-	switch motor{
+	switch (motor){
 		case 1:
 		if (direction == 1){
 			softPwmWrite(motor1A_pin, 0);
@@ -66,6 +69,7 @@ void motorDriveSpeed(int motor, int pwm_speed, int direction){
 			softPwmWrite(motor1B_pin, 0);
 			softPwmWrite(motor1A_pin, pwm_speed);
 			}
+			break;
 		
 		case 2:
 		if (direction == 1){
@@ -75,6 +79,7 @@ void motorDriveSpeed(int motor, int pwm_speed, int direction){
 			softPwmWrite(motor2B_pin, 0);
 			softPwmWrite(motor2A_pin, pwm_speed);
 			}
+			break;
 		case 3:
 		if (direction == 1){
 			softPwmWrite(motor3A_pin, 0);
@@ -83,6 +88,7 @@ void motorDriveSpeed(int motor, int pwm_speed, int direction){
 			softPwmWrite(motor3B_pin, 0);
 			softPwmWrite(motor3A_pin, pwm_speed);
 			}	
+			break;
 		case 4:
 		if (direction == 1){
 			softPwmWrite(motor4A_pin, 0);
@@ -91,6 +97,7 @@ void motorDriveSpeed(int motor, int pwm_speed, int direction){
 			softPwmWrite(motor4B_pin, 0);
 			softPwmWrite(motor4A_pin, pwm_speed);
 			}
+			break;
 		default:
 		  break;
 		}
@@ -122,19 +129,17 @@ void motorStop(int motor){
 }
 
 void motorStopAll(){
-	motorStrop(motor1);
-	motorStrop(motor2);
-	motorStrop(motor3);
-	motorStrop(motor4);
+	motorStop(motor1);
+	motorStop(motor2);
+	motorStop(motor3);
+	motorStop(motor4);
 }
 
-void motorBaseTurn(double time_sec, int pwm_speed, int direction){
+void motorBaseTurn( int pwm_speed, int direction){
     motorDriveSpeed( motor1,  pwm_speed,  direction);
 	motorDriveSpeed( motor2,  pwm_speed,  direction);
 	motorDriveSpeed( motor3,  pwm_speed,  -direction);
 	motorDriveSpeed( motor4,  pwm_speed,  -direction);
-	sleep(time_sec)
-	motorStopAll();
 }
 
 void motorBaseTurnTime(double time_sec, int pwm_speed, int direction){
@@ -142,7 +147,7 @@ void motorBaseTurnTime(double time_sec, int pwm_speed, int direction){
 	motorDriveSpeed( motor2,  pwm_speed,  direction);
 	motorDriveSpeed( motor3,  pwm_speed,  -direction);
 	motorDriveSpeed( motor4,  pwm_speed,  -direction);
-	sleep(time_sec)
+	sleep(time_sec);
 	motorStopAll();
 }
 
