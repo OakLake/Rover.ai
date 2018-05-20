@@ -5,7 +5,7 @@ Test Platform for incorporating AI on a wheeled robot.
 - Pirate-4WD Mobile Platform - DFRobot
 - Raspberry Pi 3 B+
 - Raspberry Pi Camera Module V2 - Official
-- Adafruit DRV8871 DC Motor Driver Breakout Board - 3.6A Max
+- Adafruit DRV8871 DC Motor Driver Breakout Board - 3.6A Max x4
 - DFR0205 Step-Down DC-DC Power Converter 25W -DFRobot
 - Official Raspberry Pi 3 Case - Black/Grey
 - 1800 mAh Lipo battery
