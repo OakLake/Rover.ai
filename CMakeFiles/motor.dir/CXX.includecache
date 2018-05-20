@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/Rover.ai/src/motor_test.cpp
+motorlib.h
+/home/pi/Rover.ai/src/motorlib.h
+iostream
+-
+unistd.h
+-
+
+/home/pi/Rover.ai/src/motorlib.cpp
+motorlib.h
+/home/pi/Rover.ai/src/motorlib.h
+wiringPi.h
+-
+softPwm.h
+-
+iostream
+-
+unistd.h
+-
+
+/usr/local/include/softPwm.h
+
+/usr/local/include/wiringPi.h
+
+include/motorlib.h
+
